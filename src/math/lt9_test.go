@@ -1,3 +1,4 @@
+// 判断整数是否为回文
 package math
 
 import "testing"
