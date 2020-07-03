@@ -6,8 +6,7 @@ import "testing"
 var ret [][]int
 
 func TestLT46(t *testing.T) {
-	permute([]int{1, 2, 3})
-	t.Log(ret)
+	t.Log(permute([]int{1, 2, 3}))
 }
 
 func permute(nums []int) [][]int {
@@ -20,26 +19,25 @@ func permute(nums []int) [][]int {
 		count *= l
 	}
 
-	ret = make([][]int, 0, count)
-	help(nums, 0)
-	return ret
+	ret := make([][]int, 0, count)
+	return help(nums, 0, ret)
 }
 
-func help(nums []int, index int) {
+func help(nums []int, index int, ret [][]int) [][]int {
 	l := len(nums)
 
 	if index == l-1 {
 		tmp := make([]int, l)
 		copy(tmp, nums)
-		ret = append(ret, tmp)
-		return
+		return append(ret, tmp)
 	}
 
 	for i := index; i < l; i++ {
 		swap(nums, i, index)
-		help(nums, index+1)
+		ret = help(nums, index+1, ret)
 		swap(nums, i, index)
 	}
+	return ret
 }
 
 func swap(nums []int, i, j int) {
