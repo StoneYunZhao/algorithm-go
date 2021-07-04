@@ -25,3 +25,15 @@ func swap(nums []int, i, j int) {
 	nums[i] = nums[j]
 	nums[j] = tmp
 }
+
+func removeElement2(nums []int, val int) int {
+	i := 0
+	for j := 0; j < len(nums); j++ {
+		if nums[j] != val {
+			nums[i] = nums[j]
+			i++
+		}
+	}
+
+	return i
+}
