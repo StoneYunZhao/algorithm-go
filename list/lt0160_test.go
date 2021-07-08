@@ -31,3 +31,24 @@ func getNodesCount(head *ListNode) int {
 	}
 	return c
 }
+
+
+func getIntersectionNode2(headA, headB *ListNode) *ListNode {
+	a, b := headA, headB
+
+	for a != b {
+		if a == nil {
+			a = headB
+		} else {
+			a = a.Next
+		}
+
+		if b == nil {
+			b = headA
+		} else {
+			b = b.Next
+		}
+	}
+
+	return a
+}
